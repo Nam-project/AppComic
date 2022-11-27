@@ -56,8 +56,8 @@
             android:orientation="vertical"
             android:layout_marginLeft="-50dp"
             android:background="@drawable/circle"
-            android:layout_width="430dp"
-            android:layout_height="430dp">
+            android:layout_width="440dp"
+            android:layout_height="440dp">
             <TextView
                 android:layout_marginTop="80dp"
                 android:layout_marginLeft="65dp"

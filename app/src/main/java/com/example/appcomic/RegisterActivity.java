@@ -15,12 +15,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterActivity extends AppCompatActivity {
 
     Button btnlogin, signup ;
-    EditText etRegEmail, etRegPassword;
+    EditText etRegEmail, etRegPassword, etName;
     FirebaseAuth mAuth;
+    FirebaseFirestore firestore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +32,11 @@ public class RegisterActivity extends AppCompatActivity {
         btnlogin = (Button) findViewById(R.id.btnlogin);
         signup = (Button) findViewById(R.id.signup);
         etRegEmail = findViewById(R.id.etRegEmail);
+        etName = findViewById(R.id.etName);
         etRegPassword = findViewById(R.id.etRegPass);
 
         mAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +58,12 @@ public class RegisterActivity extends AppCompatActivity {
     private void createUser() {
         String email = etRegEmail.getText().toString();
         String password = etRegPassword.getText().toString();
+        String name = etName.getText().toString();
 
-        if (TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(name)){
+            etName.setError("Email cannot be empty");
+            etName.requestFocus();
+        }else if (TextUtils.isEmpty(email)){
             etRegEmail.setError("Email cannot be empty");
             etRegEmail.requestFocus();
         }else if (TextUtils.isEmpty(password)){
@@ -67,6 +76,9 @@ public class RegisterActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         Toast.makeText(RegisterActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                        firestore.collection("User")
+                                        .document(FirebaseAuth.getInstance().getUid())
+                                                .set(new UserModel(name, email));
                         finish();
                     }else {
                         Toast.makeText(RegisterActivity.this, "Registration error: "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();

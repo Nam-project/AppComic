@@ -56,10 +56,10 @@
             android:orientation="vertical"
             android:layout_marginLeft="-50dp"
             android:background="@drawable/circle"
-            android:layout_width="430dp"
-            android:layout_height="430dp">
+            android:layout_width="440dp"
+            android:layout_height="440dp">
             <TextView
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginLeft="65dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -68,8 +68,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <EditText
+                android:id="@+id/etName"
+                android:layout_marginTop="10dp"
+                android:drawableRight="@drawable/ic_baseline_vpn_key_24"
+                android:layout_marginLeft="65dp"
+                android:hint="Name"
+                android:layout_width="320dp"
+                android:layout_height="50dp"/>
+            <EditText
                 android:id="@+id/etRegEmail"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:drawableRight="@drawable/ic_baseline_perm_identity_24"
                 android:layout_marginLeft="65dp"
                 android:hint="Email or user name"
@@ -78,7 +86,7 @@
             <EditText
                 android:id="@+id/etRegPass"
                 android:password="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:drawableRight="@drawable/ic_baseline_vpn_key_24"
 
                 android:layout_marginLeft="65dp"
@@ -87,7 +95,7 @@
                 android:layout_height="50dp"/>
             <EditText
                 android:password="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:drawableRight="@drawable/ic_baseline_vpn_key_24"
                 android:layout_marginLeft="65dp"
                 android:hint="Enter the password"
@@ -95,7 +103,6 @@
                 android:layout_height="50dp"/>
             <Button
                 android:id="@+id/signup"
-                android:layout_marginTop="15dp"
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:textAllCaps="false"
