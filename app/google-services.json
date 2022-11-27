@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "719392482191",
+    "project_id": "appcomic-d5faf",
+    "storage_bucket": "appcomic-d5faf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719392482191:android:613a8a63dbab4cc9d361fa",
+        "android_client_info": {
+          "package_name": "com.example.appcomic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719392482191-dm3i63jb6fdlgvkqi1dolbpapver9oe8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEWa_dbs5tgX8RBOaXYVAhgzefU_m2wW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719392482191-dm3i63jb6fdlgvkqi1dolbpapver9oe8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
