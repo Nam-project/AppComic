@@ -43,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_enter, R.anim.anim_exit);
                 finish();
             }
         });
@@ -79,6 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
                         firestore.collection("User")
                                         .document(FirebaseAuth.getInstance().getUid())
                                                 .set(new UserModel(name, email));
+                        overridePendingTransition(R.anim.anim_enter, R.anim.anim_exit);
                         finish();
                     }else {
                         Toast.makeText(RegisterActivity.this, "Registration error: "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();

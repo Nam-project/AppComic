@@ -4,11 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/bar_chart_24.xml" value="0.1365" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/bg_bt.xml" value="0.1365" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/bg_gradien.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/circle.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/gradient.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/home_24.xml" value="0.1365" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_brightness_1_24.xml" value="0.1365" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.1365" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/activity_main.xml" value="0.264" />
