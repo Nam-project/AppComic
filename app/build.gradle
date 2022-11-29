@@ -43,4 +43,9 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:8.0.2'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // Circle Indicator (To fix the xml preview "Missing classes" error)
+    implementation 'me.relex:circleindicator:2.1.6'
+
+    implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0'
 }

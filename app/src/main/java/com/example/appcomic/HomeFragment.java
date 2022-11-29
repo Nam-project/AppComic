@@ -18,6 +18,11 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.imaginativeworld.whynotimagecarousel.ImageCarousel;
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
+
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
@@ -78,6 +83,24 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
+        //Slider
+        ImageCarousel carousel = view.findViewById(R.id.carousel);
+        ArrayList<CarouselItem> clist = new ArrayList<>();
+        clist.add(new CarouselItem(
+                "https://st.ntcdntempv3.com/data/comics/51/dich-uc-da-chi-ca.jpg",
+                "Photo by Aaron Wu on Unsplash"
+        ));
+        clist.add(new CarouselItem(
+                "https://st.ntcdntempv3.com/data/comics/51/dich-uc-da-chi-ca.jpg",
+                "Photo by Aaron Wu on Unsplash"
+        ));
+        clist.add(new CarouselItem(
+                "https://st.ntcdntempv3.com/data/comics/51/dich-uc-da-chi-ca.jpg",
+                "Photo by Aaron Wu on Unsplash"
+        ));
+
+        carousel.setData(clist);
+
 
 //        mLinearLayoutManager = new LinearLayoutManager(getActivity());
 //        mLinearLayoutManager.setReverseLayout(true);

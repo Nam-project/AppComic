@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/background_home.xml" value="0.137" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/bar_chart_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/bg_bt.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/bg_gradien.xml" value="0.1365" />
@@ -14,6 +15,7 @@
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1365" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_subway_24.xml" value="0.137" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/activity_main.xml" value="0.264" />
@@ -21,7 +23,7 @@
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/activity_start.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/card_comic.xml" value="0.23007246376811594" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_category.xml" value="0.22826086956521738" />
-        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_home.xml" value="0.29683698296836986" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_profile.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_rank.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/menu/bottom_nav_menu.xml" value="0.253125" />
