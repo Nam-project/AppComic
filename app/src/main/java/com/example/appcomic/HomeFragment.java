@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +38,12 @@ public class HomeFragment extends Fragment {
 
     View view;
 //    LinearLayoutManager mLinearLayoutManager;
-    RecyclerView mRecyclerView;
+    RecyclerView recyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
-    FirebaseRecyclerAdapter<ComicModel, ViewHolder> firebaseRecyclerAdapter;
-    FirebaseRecyclerOptions<ComicModel> options;
+//    FirebaseRecyclerAdapter<ComicModel, ViewHolder> firebaseRecyclerAdapter;
+//    FirebaseRecyclerOptions<ComicModel> options;
+    ComicAdapter adapter;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -87,16 +89,16 @@ public class HomeFragment extends Fragment {
         ImageCarousel carousel = view.findViewById(R.id.carousel);
         ArrayList<CarouselItem> clist = new ArrayList<>();
         clist.add(new CarouselItem(
-                "https://st.ntcdntempv3.com/data/comics/51/dich-uc-da-chi-ca.jpg",
-                "Photo by Aaron Wu on Unsplash"
+                "https://st.ntcdntempv3.com/data/comics/182/truong-hoc-sieu-anh-hung.jpg",
+                "My Hero Academia"
         ));
         clist.add(new CarouselItem(
-                "https://st.ntcdntempv3.com/data/comics/51/dich-uc-da-chi-ca.jpg",
-                "Photo by Aaron Wu on Unsplash"
+                "https://st.ntcdntempv3.com/data/comics/69/black-clover-phap-su-khong-phep-thuat.jpg",
+                "Black clover"
         ));
         clist.add(new CarouselItem(
-                "https://st.ntcdntempv3.com/data/comics/51/dich-uc-da-chi-ca.jpg",
-                "Photo by Aaron Wu on Unsplash"
+                "https://st.ntcdntempv3.com/data/comics/162/gia-dinh-diep-vien.jpg",
+                "Gia đình điệp viên"
         ));
 
         carousel.setData(clist);
@@ -106,64 +108,34 @@ public class HomeFragment extends Fragment {
 //        mLinearLayoutManager.setReverseLayout(true);
 //        mLinearLayoutManager.setStackFromEnd(true);
 
-        mRecyclerView = view.findViewById(R.id.recyclerViewComic);
+//        mRecyclerView = view.findViewById(R.id.recyclerViewComic);
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+//        mRecyclerView.setLayoutManager(gridLayoutManager);
+
+
+        recyclerView = view.findViewById(R.id.recyclerViewComic);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-        mRecyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.setLayoutManager(gridLayoutManager);
 
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference("Comic");
+        FirebaseRecyclerOptions<ComicModel> options =
+                new FirebaseRecyclerOptions.Builder<ComicModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Comic"), ComicModel.class)
+                        .build();
 
-        showData();
-
+        adapter = new ComicAdapter(options);
+        recyclerView.setAdapter(adapter);
 
         return view;
-    }
-
-    private void showData() {
-
-        options = new FirebaseRecyclerOptions.Builder<ComicModel>().setQuery(mDatabaseReference,ComicModel.class).build();
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ComicModel, ViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull ComicModel model) {
-                holder.setDetails(getActivity().getApplicationContext(), model.getName(), model.getImage());
-
-            }
-
-            @NonNull
-            @Override
-            public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-                View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_comic, parent, false);
-
-                ViewHolder viewHolder = new ViewHolder(itemView);
-                viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Toast.makeText(getActivity(), "Hello", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onItemLongClick(View view, int position) {
-                        Toast.makeText(getActivity(), "Long Click", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                return viewHolder;
-            }
-        };
-
-//        mRecyclerView.setLayoutManager(mLinearLayoutManager);
-        firebaseRecyclerAdapter.startListening();
-        mRecyclerView.setAdapter(firebaseRecyclerAdapter);
-
-
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        if (firebaseRecyclerAdapter != null) {
-            firebaseRecyclerAdapter.startListening();
-        }
+        adapter.startListening();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }

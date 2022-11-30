@@ -11,17 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="ScrollViewCount,UselessParent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <ImageButton
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/usermale50" />
+                <ImageButton
+                    android:layout_margin="5dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_baseline_search_24"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"/>
+            </RelativeLayout>
             <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:id="@+id/carousel"
                 android:layout_width="match_parent"
                 android:layout_height="256dp"
-                android:layout_margin="10dp"
                 app:autoPlay="true"
                 app:autoPlayDelay="3000"
                 app:captionMargin="0dp"

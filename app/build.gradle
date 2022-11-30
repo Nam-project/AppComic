@@ -47,5 +47,7 @@ dependencies {
     // Circle Indicator (To fix the xml preview "Missing classes" error)
     implementation 'me.relex:circleindicator:2.1.6'
 
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+
     implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0'
 }
