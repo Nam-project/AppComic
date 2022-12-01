@@ -29,7 +29,7 @@ public class ComicAdapter extends FirebaseRecyclerAdapter<ComicModel, ComicAdapt
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, new InformationFragment(model.getName(), model.getImage(), model.getTacGia(), model.getTomTat())).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, new InformationFragment(model.getName(), model.getImage(), model.getTacGia(), model.getTomTat(), model.getTheLoai(), model.getKey())).addToBackStack(null).commit();
 
             }
         });

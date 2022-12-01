@@ -1,16 +1,27 @@
 package com.example.appcomic;
 
 public class ComicModel {
-    String image, name, tacGia, tomTat;
+    String image, name, tacGia, tomTat, theLoai;
+    int key;
 
     public ComicModel() {
     }
 
-    public ComicModel(String image, String name, String tacGia, String tomTat) {
+    public ComicModel(String image, String name, String tacGia, String tomTat, String theLoai, int key) {
         this.image = image;
         this.name = name;
         this.tacGia = tacGia;
         this.tomTat = tomTat;
+        this.theLoai = theLoai;
+        this.key = key;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
     }
 
     public String getImage() {
@@ -27,6 +38,14 @@ public class ComicModel {
 
     public void setTomTat(String tomTat) {
         this.tomTat = tomTat;
+    }
+
+    public String getTheLoai() {
+        return theLoai;
+    }
+
+    public void setTheLoai(String theLoai) {
+        this.theLoai = theLoai;
     }
 
     public String getName() {
