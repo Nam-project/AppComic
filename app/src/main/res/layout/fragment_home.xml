@@ -94,6 +94,7 @@
                     android:paddingRight="12dp">
 
                     <ImageButton
+                        android:id="@+id/btnCotegory"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@android:color/transparent"
@@ -138,6 +139,7 @@
                     android:paddingRight="12dp">
 
                     <ImageButton
+                        android:id="@+id/btnFollow"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@android:color/transparent"

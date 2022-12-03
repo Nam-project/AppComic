@@ -14,16 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
+
+
 public class ChapterAdapter extends FirebaseRecyclerAdapter<ChapterModel, ChapterAdapter.Chapterviewholder> {
 
+    int i = 1;
     public ChapterAdapter(@NonNull FirebaseRecyclerOptions<ChapterModel> options) {
         super(options);
     }
 
     @Override
     protected void onBindViewHolder(@NonNull Chapterviewholder holder, int position, @NonNull ChapterModel model) {
-        holder.numberText.setText(String.valueOf(model.key));
-
+        holder.numberText.setText(String.valueOf(i));
+        i++;
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

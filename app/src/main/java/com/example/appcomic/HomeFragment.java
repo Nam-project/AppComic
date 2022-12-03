@@ -115,6 +115,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        ImageButton btnFollow = view.findViewById(R.id.btnFollow);
+        btnFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
 
 //        mLinearLayoutManager = new LinearLayoutManager(getActivity());
 //        mLinearLayoutManager.setReverseLayout(true);
