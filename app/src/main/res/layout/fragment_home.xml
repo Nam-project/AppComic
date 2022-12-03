@@ -27,15 +27,20 @@
                     android:layout_alignParentTop="true"
                     android:background="@android:color/transparent"
                     android:src="@drawable/usermale50" />
+
                 <ImageButton
-                    android:layout_margin="5dp"
+                    android:id="@+id/btnSearch"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@android:color/transparent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_baseline_search_24"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"/>
+                    android:src="@drawable/ic_baseline_search_24" />
             </RelativeLayout>
             <org.imaginativeworld.whynotimagecarousel.ImageCarousel
                 android:layout_marginLeft="10dp"

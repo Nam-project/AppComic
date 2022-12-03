@@ -2,6 +2,8 @@ package com.example.appcomic;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,8 +20,17 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 public class InformationFragment extends Fragment {
 
@@ -32,6 +44,9 @@ public class InformationFragment extends Fragment {
     int key;
     RecyclerView recyclerView;
     ChapterAdapter adapter;
+    DatabaseReference databaseReference;
+
+    String email;
 
     public InformationFragment() {
 
@@ -70,13 +85,35 @@ public class InformationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_information, container, false);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        email = user.getEmail();
         ImageView imageViewholder = view.findViewById(R.id.imgInfoC);
         TextView nameholder = view.findViewById(R.id.tvNameComicIF);
         TextView tacGiaholder = view.findViewById(R.id.tvTacGiaIF);
         TextView tomTatholder = view.findViewById(R.id.tvTomtatIF);
         TextView theLoaiholder = view.findViewById(R.id.tvTheLoaiIF);
         ImageButton btnBack = view.findViewById(R.id.btnBack);
+        Button btnTheoDoi = view.findViewById(R.id.btnTheoDoi);
         recyclerView = view.findViewById(R.id.recyclerViewChapter);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("TheoDoi");
+
+        DatabaseReference df = FirebaseDatabase.getInstance().getReference("TheoDoi");
+        df.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    int keyC  = ds.child("keyComic").getValue(int.class);
+                    if (keyC == key) {
+                        btnTheoDoi.setText("Bỏ theo dõi");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         nameholder.setText(name);
         tacGiaholder.setText(tacGia);
@@ -92,6 +129,74 @@ public class InformationFragment extends Fragment {
                 onBackPerssed();
             }
         });
+
+
+
+        btnTheoDoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (btnTheoDoi.getText().toString().equals("Theo dõi")) {
+                    insertTheoDoi();
+                    df.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            btnTheoDoi.setText("Theo dõi");
+                            for(DataSnapshot ds : snapshot.getChildren()){
+                                int keyC  = ds.child("keyComic").getValue(int.class);
+                                if (keyC == key) {
+                                    btnTheoDoi.setText("Bỏ theo dõi");
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+                }else {
+                    DatabaseReference dl = FirebaseDatabase.getInstance().getReference("TheoDoi");
+                    dl.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot ds : snapshot.getChildren()){
+                                int keyC  = ds.child("keyComic").getValue(int.class);
+                                if (keyC == key) {
+                                    DatabaseReference dl1 = FirebaseDatabase.getInstance().getReference("TheoDoi/"+ds.getKey());
+                                    dl1.removeValue();
+                                    df.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            btnTheoDoi.setText("Theo dõi");
+                                            for(DataSnapshot ds : snapshot.getChildren()){
+                                                int keyC  = ds.child("keyComic").getValue(int.class);
+                                                if (keyC == key) {
+                                                    btnTheoDoi.setText("Bỏ theo dõi");
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+        });
+
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -110,11 +215,22 @@ public class InformationFragment extends Fragment {
         return view;
     }
 
+    private void insertTheoDoi() {
+        TheoDoiModel theoDoi = new TheoDoiModel(email, key);
+        databaseReference.push().setValue(theoDoi);
+    }
+
+    public void deleteTheoDoi() {
+
+    }
+
+
     @Override
     public void onStart() {
         super.onStart();
         adapter.startListening();
     }
+
 
     public void onStop() {
         super.onStop();
