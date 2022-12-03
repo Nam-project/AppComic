@@ -123,6 +123,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        ImageButton btnCotegory = view.findViewById(R.id.btnCotegory);
+        btnCotegory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, new CategoryFragment()).commit();
+
+            }
+        });
+
 
 //        mLinearLayoutManager = new LinearLayoutManager(getActivity());
 //        mLinearLayoutManager.setReverseLayout(true);
