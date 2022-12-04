@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     HomeFragment homeFragment = new HomeFragment();
     CategoryFragment categoryFragment = new CategoryFragment();
-    RankFragment rankFragment = new RankFragment();
+    HistoryFragment historyFragment = new HistoryFragment();
     ProfileFragment profileFragment = new ProfileFragment();
 
     @Override
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.category:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, categoryFragment).commit();
                         return true;
-                    case R.id.ranking:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, rankFragment).commit();
+                    case R.id.history:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, historyFragment).commit();
                         return true;
                     case R.id.profile:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, profileFragment).commit();

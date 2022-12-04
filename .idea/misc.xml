@@ -13,22 +13,26 @@
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/home_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_brightness_1_24.xml" value="0.1365" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_delete_outline_24.xml" value="0.137" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_subway_24.xml" value="0.137" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.1365" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/myrect.xml" value="0.137" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/drawable/trans_btn.xml" value="0.137" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/activity_register.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/activity_start.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/card_chapter.xml" value="0.23007246376811594" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/card_comic.xml" value="0.23007246376811594" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/card_history.xml" value="0.23007246376811594" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/dialog_update_password.xml" value="0.1" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_category.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_chapter.xml" value="0.23007246376811594" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_follow.xml" value="0.23007246376811594" />
+        <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_history.xml" value="0.23007246376811594" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_information.xml" value="0.23007246376811594" />
         <entry key="..\:/AndroidProject/AppComic/app/src/main/res/layout/fragment_profile.xml" value="0.22826086956521738" />

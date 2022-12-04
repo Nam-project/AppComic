@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -50,6 +52,7 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    public static String e;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -104,6 +107,9 @@ public class HomeFragment extends Fragment {
         ));
 
         carousel.setData(clist);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        e = user.getEmail();
 
         ImageButton btnSearch = view.findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {

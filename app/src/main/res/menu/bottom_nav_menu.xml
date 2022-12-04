@@ -6,9 +6,9 @@
     <item android:id="@+id/category"
         android:title="Thể loại"
         android:icon="@drawable/category_24"/>
-    <item android:id="@+id/ranking"
-        android:title="Xếp hạng"
-        android:icon="@drawable/bar_chart_24"/>
+    <item android:id="@+id/history"
+        android:title="Lịch sử"
+        android:icon="@drawable/ic_baseline_history_24"/>
     <item android:id="@+id/profile"
         android:title="Tôi"
         android:icon="@drawable/person_24"/>
