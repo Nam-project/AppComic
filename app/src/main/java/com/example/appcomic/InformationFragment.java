@@ -45,6 +45,8 @@ public class InformationFragment extends Fragment {
     RecyclerView recyclerView;
     ChapterAdapter adapter;
     DatabaseReference databaseReference;
+    int tmp, tmp1;
+    String keydelete;
 
     String email;
 
@@ -101,11 +103,17 @@ public class InformationFragment extends Fragment {
         df.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tmp = 0;
                 for(DataSnapshot ds : snapshot.getChildren()){
                     int keyC  = ds.child("keyComic").getValue(int.class);
                     if (keyC == key) {
-                        btnTheoDoi.setText("Bỏ theo dõi");
+                        tmp+=1;
                     }
+                }
+                if (tmp == 0) {
+                    btnTheoDoi.setText("Theo dõi");
+                }else {
+                    btnTheoDoi.setText("Bỏ theo dõi");
                 }
             }
 
@@ -137,25 +145,9 @@ public class InformationFragment extends Fragment {
             public void onClick(View view) {
                 if (btnTheoDoi.getText().toString().equals("Theo dõi")) {
                     insertTheoDoi();
-                    df.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            btnTheoDoi.setText("Theo dõi");
-                            for(DataSnapshot ds : snapshot.getChildren()){
-                                int keyC  = ds.child("keyComic").getValue(int.class);
-                                if (keyC == key) {
-                                    btnTheoDoi.setText("Bỏ theo dõi");
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
+                    btnTheoDoi.setText("Bỏ theo dõi");
                 }else {
+                    tmp1 =0;
                     DatabaseReference dl = FirebaseDatabase.getInstance().getReference("TheoDoi");
                     dl.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -163,27 +155,16 @@ public class InformationFragment extends Fragment {
                             for(DataSnapshot ds : snapshot.getChildren()){
                                 int keyC  = ds.child("keyComic").getValue(int.class);
                                 if (keyC == key) {
-                                    DatabaseReference dl1 = FirebaseDatabase.getInstance().getReference("TheoDoi/"+ds.getKey());
-                                    dl1.removeValue();
-                                    df.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            btnTheoDoi.setText("Theo dõi");
-                                            for(DataSnapshot ds : snapshot.getChildren()){
-                                                int keyC  = ds.child("keyComic").getValue(int.class);
-                                                if (keyC == key) {
-                                                    btnTheoDoi.setText("Bỏ theo dõi");
-                                                }
-                                            }
-                                        }
+                                    keydelete = ds.getKey();
 
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-
-                                        }
-                                    });
-
+                                    tmp1+=1;
                                 }
+                            }
+                            if (tmp1 ==1) {
+                                DatabaseReference dl1 = FirebaseDatabase.getInstance().getReference("TheoDoi/"+keydelete);
+                                dl1.removeValue();
+                                btnTheoDoi.setText("Theo dõi");
+//                                Toast.makeText(getContext(), ""+keydelete, Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -216,7 +197,7 @@ public class InformationFragment extends Fragment {
     }
 
     private void insertTheoDoi() {
-        TheoDoiModel theoDoi = new TheoDoiModel(email, key);
+        TheoDoiModel theoDoi = new TheoDoiModel(email, image, name, key);
         databaseReference.push().setValue(theoDoi);
     }
 
