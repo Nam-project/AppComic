@@ -4,17 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HistoryFragment">
+    tools:context=".FollowFragment">
     <TextView
         android:layout_gravity="center"
-        android:textColor="@color/black"
         android:textSize="18dp"
-        android:text="Lịch sử"
+        android:textColor="@color/black"
+        android:text="Danh sách Follow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
-
-        android:id="@+id/recyclerHistory"
+        android:id="@+id/recyclerFollow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

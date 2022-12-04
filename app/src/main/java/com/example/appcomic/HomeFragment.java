@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -41,11 +42,11 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     View view;
-//    LinearLayoutManager mLinearLayoutManager;
+    //    LinearLayoutManager mLinearLayoutManager;
     RecyclerView recyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
-//    FirebaseRecyclerAdapter<ComicModel, ViewHolder> firebaseRecyclerAdapter;
+    //    FirebaseRecyclerAdapter<ComicModel, ViewHolder> firebaseRecyclerAdapter;
 //    FirebaseRecyclerOptions<ComicModel> options;
     ComicAdapter adapter;
 
@@ -90,6 +91,22 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //Anh xa
+        ImageButton btnSearch = view.findViewById(R.id.btnSearch);
+        ImageButton btnFollow = view.findViewById(R.id.btnFollow);
+        ImageButton btnCotegory = view.findViewById(R.id.btnCotegory);
+        ImageView btnHistory = view.findViewById(R.id.btnHistory);
+
+        recyclerView = view.findViewById(R.id.recyclerViewComic);
+
+
+
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        e = user.getEmail();
+
+
         //Slider
         ImageCarousel carousel = view.findViewById(R.id.carousel);
         ArrayList<CarouselItem> clist = new ArrayList<>();
@@ -108,10 +125,8 @@ public class HomeFragment extends Fragment {
 
         carousel.setData(clist);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        e = user.getEmail();
+        //End slider
 
-        ImageButton btnSearch = view.findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,35 +136,34 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        ImageButton btnFollow = view.findViewById(R.id.btnFollow);
         btnFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, new FollowFragment()).addToBackStack(null).commit();
 
             }
         });
 
-        ImageButton btnCotegory = view.findViewById(R.id.btnCotegory);
         btnCotegory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, new CategoryFragment()).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, new CategoryFragment()).addToBackStack(null).commit();
+
+            }
+        });
+
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, new HistoryFragment()).addToBackStack(null).commit();
 
             }
         });
 
 
-//        mLinearLayoutManager = new LinearLayoutManager(getActivity());
-//        mLinearLayoutManager.setReverseLayout(true);
-//        mLinearLayoutManager.setStackFromEnd(true);
-
-//        mRecyclerView = view.findViewById(R.id.recyclerViewComic);
-//        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-//        mRecyclerView.setLayoutManager(gridLayoutManager);
-
-
-        recyclerView = view.findViewById(R.id.recyclerViewComic);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
 
@@ -169,6 +183,7 @@ public class HomeFragment extends Fragment {
         super.onStart();
         adapter.startListening();
     }
+
     @Override
     public void onStop() {
         super.onStop();
