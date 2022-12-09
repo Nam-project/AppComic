@@ -104,7 +104,9 @@ public class HomeFragment extends Fragment {
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        e = user.getEmail();
+        if (user != null) {
+            e = user.getEmail();
+        }
 
 
         //Slider
